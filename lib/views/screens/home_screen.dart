@@ -1,0 +1,80 @@
+import 'package:flutter/material.dart';
+import 'package:imthon3/models/product_model.dart';
+import 'package:imthon3/utils/main_util.dart';
+import 'package:imthon3/viewmodels/product_viewmodel.dart';
+import 'package:imthon3/views/widgets/product_widget.dart';
+
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final productVM = ProductViewModel(); // ViewModel instance
+
+    return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.transparent,
+        title: Text("Your Location", style: TextStyle(color: Colors.white)),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.search, color: Colors.white, size: 35),
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: Icon(
+              Icons.notifications_outlined,
+              color: Colors.white,
+              size: 35,
+            ),
+          ),
+        ],
+      ),
+      body: FutureBuilder<List<ProductModel>>(
+        future: productVM.getProducts(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator());
+          }
+
+          if (snapshot.hasError) {
+            print(snapshot.error);
+            return Center(child: Text("Error: ${snapshot.error}"));
+          }
+
+          final products = snapshot.data ?? [];
+
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // banner qismi...
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Find by Category"),
+                    Text(
+                      "See All",
+                      style: TextStyle(color: Appcolors.appOrange),
+                    ),
+                  ],
+                ),
+              ),
+              Wrap(
+                spacing: 12,
+                runSpacing: 12,
+                children:
+                    products
+                        .map((product) => ProductWidget(product: product))
+                        .toList(),
+              ),
+            ],
+          );
+        },
+      ),
+    );
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "834436888177",
+    "project_id": "imthon4",
+    "storage_bucket": "imthon4.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:834436888177:android:aefba229bf0bd6c3ff8dd0",
+        "android_client_info": {
+          "package_name": "com.example.imthon3"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAUKUOVJ5ybDr086VTKYSMg5djPwSvKHHM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
