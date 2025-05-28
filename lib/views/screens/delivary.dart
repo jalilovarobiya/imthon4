@@ -1,22 +1,14 @@
-import 'dart:convert';
-
-import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:imthon3/utils/main_util.dart';
 import 'package:http/http.dart' as http;
 
-void main() async {
-  runApp(MainApp());
-}
-
-class MainApp extends StatefulWidget {
-  MainApp({super.key});
+class Delivary extends StatefulWidget {
+  const Delivary({super.key});
 
   @override
-  State<MainApp> createState() => _MainAppState();
+  State<Delivary> createState() => _DelivaryState();
 }
 
-class _MainAppState extends State<MainApp> {
+class _DelivaryState extends State<Delivary> {
   late GoogleMapController mapController;
   LatLng? currentLocation;
   LatLng? destination;
@@ -35,7 +27,7 @@ class _MainAppState extends State<MainApp> {
     setState(() {
       currentLocation = LatLng(pos.latitude, pos.longitude);
       markers.add(
-        Marker(markerId: MarkerId("origin"), position: currentLocation!),
+        Marker(markerId: const MarkerId("origin"), position: currentLocation!),
       );
     });
   }
@@ -62,7 +54,7 @@ class _MainAppState extends State<MainApp> {
         polylines.clear();
         polylines.add(
           Polyline(
-            polylineId: PolylineId("route"),
+            polylineId: const PolylineId("route"),
             points: polylinePoints,
             color: Colors.blue,
             width: 4,
@@ -112,38 +104,35 @@ class _MainAppState extends State<MainApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body:
-            currentLocation == null
-                ? Center(child: CircularProgressIndicator())
-                : GoogleMap(
-                  mapType: MapType.hybrid,
-                  key: ValueKey('google_map'),
-                  initialCameraPosition: CameraPosition(
-                    target: currentLocation!,
-                    zoom: 14,
-                  ),
-                  onMapCreated: (controller) {
-                    mapController = controller;
-                  },
-                  myLocationEnabled: true,
-                  markers: markers,
-                  polylines: polylines,
-                  onTap: (LatLng point) async {
-                    setState(() {
-                      destination = point;
-                      markers.removeWhere((m) => m.markerId.value == "dest");
-                      markers.add(
-                        Marker(markerId: MarkerId("dest"), position: point),
-                      );
-                    });
-
-                    await _getDirections(currentLocation!, point);
-                  },
+    return Scaffold(
+      appBar: AppBar(title: const Text("Map Screen")),
+      body:
+          currentLocation == null
+              ? const Center(child: CircularProgressIndicator())
+              : GoogleMap(
+                mapType: MapType.hybrid,
+                initialCameraPosition: CameraPosition(
+                  target: currentLocation!,
+                  zoom: 14,
                 ),
-      ),
+                onMapCreated: (controller) {
+                  mapController = controller;
+                },
+                myLocationEnabled: true,
+                markers: markers,
+                polylines: polylines,
+                onTap: (LatLng point) async {
+                  setState(() {
+                    destination = point;
+                    markers.removeWhere((m) => m.markerId.value == "dest");
+                    markers.add(
+                      Marker(markerId: const MarkerId("dest"), position: point),
+                    );
+                  });
+
+                  await _getDirections(currentLocation!, point);
+                },
+              ),
     );
   }
 }

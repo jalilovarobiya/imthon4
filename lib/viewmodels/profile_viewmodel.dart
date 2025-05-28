@@ -6,5 +6,8 @@ class ProfileViewmode extends ChangeNotifier {
   void toggle(bool val) {
     isSwitched = val;
     notifyListeners();
+    if (isSwitched) {
+      showBasicNotification();
+    }
   }
 }

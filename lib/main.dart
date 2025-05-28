@@ -4,6 +4,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
   await Firebase.initializeApp();
+  await initializeNotifications();
   runApp(
     EasyLocalization(
       supportedLocales: [Locale('en'), Locale('uz'), Locale('ru')],
