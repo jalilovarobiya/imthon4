@@ -50,3 +50,4 @@ export 'package:geolocator/geolocator.dart';
 export 'package:google_maps_flutter/google_maps_flutter.dart';
 export 'package:imthon3/views/screens/delivary.dart';
 export 'package:imthon3/service/notifications_server.dart';
+export 'package:flutter_local_notifications/flutter_local_notifications.dart';

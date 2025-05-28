@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-import 'package:imthon3/models/product_model.dart';
 import 'package:imthon3/utils/main_util.dart';
 import 'package:imthon3/viewmodels/product_viewmodel.dart';
 import 'package:imthon3/views/widgets/product_widget.dart';
