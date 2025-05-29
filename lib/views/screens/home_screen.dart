@@ -1,6 +1,4 @@
 import 'package:imthon3/utils/main_util.dart';
-import 'package:imthon3/viewmodels/product_viewmodel.dart';
-import 'package:imthon3/views/widgets/product_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

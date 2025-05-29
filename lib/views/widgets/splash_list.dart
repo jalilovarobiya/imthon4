@@ -2,7 +2,8 @@ import 'package:imthon3/utils/main_util.dart';
 
 class SplashList extends StatelessWidget {
   final void Function()? onPressed;
-  const SplashList({super.key, required this.onPressed});
+  final Widget screen;
+  const SplashList({super.key, required this.onPressed, required this.screen});
 
   @override
   Widget build(BuildContext context) {
@@ -38,18 +39,12 @@ class SplashList extends StatelessWidget {
                 AppButton.appTextButton(
                   contex: context,
                   color: Colors.white,
-                  text: "Skip",
-                  screen: LoginScreen(),
+                  text: "Next",
+                  screen: screen,
                 ),
-                // TextButton(
-                //   onPressed: onPressed,
-                //   child: Text("Next", style: TextStyle(color: Colors.white)),
-                // ),
                 TextButton(
-                  onPressed: () {
-                    AppButtomsheet.showSuccessSheet(context);
-                  },
-                  child: Text("Next", style: TextStyle(color: Colors.white)),
+                  onPressed: onPressed,
+                  child: Text("Skip", style: TextStyle(color: Colors.white)),
                 ),
               ],
             ),

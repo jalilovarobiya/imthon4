@@ -9,13 +9,16 @@ class Onboarding3 extends StatelessWidget {
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: (ctx) => isLoggedIn ? Onboarding1() : LoginScreen(),
+        builder: (ctx) => isLoggedIn ? HomeScreen() : LoginScreen(),
       ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    return OnboardingWallpaper(onPressed: () => navigateNext(context));
+    return OnboardingWallpaper(
+      onPressed: () => navigateNext(context),
+      screen: LoginScreen(),
+    );
   }
 }

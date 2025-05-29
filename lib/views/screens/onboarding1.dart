@@ -16,6 +16,7 @@ class Onboarding1 extends StatelessWidget {
           ),
         );
       },
+      screen: Onboarding2(),
     );
   }
 }
