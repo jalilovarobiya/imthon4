@@ -1,13 +1,8 @@
 import 'package:imthon3/utils/main_util.dart';
 
 class OnboardingWallpaper extends StatelessWidget {
-  final void Function()? onPressed;
   final Widget screen;
-  const OnboardingWallpaper({
-    super.key,
-    required this.onPressed,
-    required this.screen,
-  });
+  const OnboardingWallpaper({super.key, required this.screen});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +15,7 @@ class OnboardingWallpaper extends StatelessWidget {
             top: 400,
             right: 20,
             left: 20,
-            child: SplashList(onPressed: onPressed, screen: screen),
+            child: SplashList(screen: screen),
           ),
         ],
       ),

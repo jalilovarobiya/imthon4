@@ -5,18 +5,6 @@ class Onboarding1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return OnboardingWallpaper(
-      onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (ctx) {
-              return Onboarding2();
-            },
-          ),
-        );
-      },
-      screen: Onboarding2(),
-    );
+    return OnboardingWallpaper(screen: Onboarding2());
   }
 }

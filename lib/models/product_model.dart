@@ -1,4 +1,5 @@
 class ProductModel {
+  int id;
   final String name;
   final double rating;
   final String distance;
@@ -6,6 +7,7 @@ class ProductModel {
   final String image;
 
   ProductModel({
+    required this.id,
     required this.name,
     required this.rating,
     required this.distance,
@@ -15,6 +17,7 @@ class ProductModel {
 
   factory ProductModel.fromJson(Map<String, dynamic> json) {
     return ProductModel(
+      id: json["id"],
       name: json['name'],
       rating: (json['rating'] as num).toDouble(),
       distance: json['distance'],

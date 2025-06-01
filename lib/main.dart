@@ -1,4 +1,6 @@
 import 'package:imthon3/utils/main_util.dart';
+import 'package:imthon3/viewmodels/card_viewmodel.dart';
+import 'package:imthon3/viewmodels/orders_viewmodel.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,6 +27,8 @@ class MainApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (context) => ChangePhotoViewmodel()),
         ChangeNotifierProvider(create: (context) => BottomViewmodel()),
+        ChangeNotifierProvider(create: (context) => OrdersVievmodel()),
+        ChangeNotifierProvider(create: (context) => CartViewmodel()),
         ChangeNotifierProvider(
           create: (context) => AuthViewmodel(authRepository: authRepository),
         ),

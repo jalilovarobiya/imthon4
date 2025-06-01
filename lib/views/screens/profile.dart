@@ -13,11 +13,11 @@ class ProfileScreen extends StatelessWidget {
             automaticallyImplyLeading: false,
 
             expandedHeight: 300,
-            // flexibleSpace: Image.asset(
-            //   AppImages.wallPaper,
-            //   width: double.infinity,
-            //   fit: BoxFit.cover,
-            // ),
+            flexibleSpace: Image.asset(
+              AppImages.background,
+              width: double.infinity,
+              fit: BoxFit.cover,
+            ),
             floating: true,
             pinned: true,
           ),

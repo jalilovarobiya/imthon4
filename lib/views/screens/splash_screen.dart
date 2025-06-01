@@ -5,23 +5,35 @@ class Splash extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Future.delayed(Duration(seconds: 3), () {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (ctx) => Onboarding1()),
-      );
-    });
-
     return Scaffold(
       backgroundColor: Appcolors.splashColor,
       body: Center(
-        child: Text(
-          'Dasturxon',
-          style: TextStyle(
-            fontSize: 60,
-            fontWeight: FontWeight.w800,
-            color: Colors.white,
-          ),
+        child: FutureBuilder(
+          future: context.read<AuthViewmodel>().isAuthenticated(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.done) {
+              Future.delayed(Duration(seconds: 3), () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (ctx) {
+                      return snapshot.data == true
+                          ? MainScreen()
+                          : Onboarding1();
+                    },
+                  ),
+                );
+              });
+            }
+            return Text(
+              'Dasturxon',
+              style: TextStyle(
+                fontSize: 60,
+                fontWeight: FontWeight.w800,
+                color: Colors.white,
+              ),
+            );
+          },
         ),
       ),
     );

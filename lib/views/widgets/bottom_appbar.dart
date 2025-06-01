@@ -1,4 +1,5 @@
 import 'package:imthon3/utils/main_util.dart';
+import 'package:imthon3/viewmodels/card_viewmodel.dart';
 
 class MyBottomAppbar extends StatelessWidget {
   const MyBottomAppbar({super.key});
@@ -16,7 +17,17 @@ class MyBottomAppbar extends StatelessWidget {
               label: "main_screen".tr(),
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.shopping_bag, size: 35),
+              icon: Badge(
+                label: Consumer<CartViewmodel>(
+                  builder: (context, cartView, child) {
+                    return Text(
+                      cartView.cartProducts.length.toString(),
+                      style: TextStyle(fontSize: 20),
+                    );
+                  },
+                ),
+                child: Icon(Icons.shopping_bag, size: 35),
+              ),
               label: "card".tr(),
             ),
             BottomNavigationBarItem(
